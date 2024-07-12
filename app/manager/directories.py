@@ -14,14 +14,13 @@ from config.vars import ConfigPath
 
 
 class DirManager(object):
-    def __init__(self) -> None:
-        pass    
-        
-    def binqueue_dir_create(self) -> None:
+    @staticmethod
+    def binqueue_dir_create() -> None:
         if str(ConfigPath.BINQUEUE).split("/")[-1] not in os.listdir(ConfigPath.QUEUE):
             os.mkdir(ConfigPath.BINQUEUE)
     
-    def binqueue_dir_delete(self) -> None:
+    @staticmethod
+    def binqueue_dir_delete() -> None:
         try:
             shutil.rmtree(ConfigPath.BINQUEUE)
         except OSError as e:

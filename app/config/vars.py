@@ -10,5 +10,9 @@ from pathlib import PosixPath, Path
 
 class ConfigPath:
     ROOT        : PosixPath = Path("app")
-    QUEUE       : PosixPath = Path("app/queue")
-    BINQUEUE    : PosixPath = Path("app/queue/bin")
+    QUEUE       : PosixPath = Path("app/i_queue")
+    BINQUEUE    : PosixPath = Path("app/i_queue/bin")
+
+
+class ConfigQueue:
+    EXTENSION   : str = ".bin"
