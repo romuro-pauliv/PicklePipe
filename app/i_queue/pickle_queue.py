@@ -6,10 +6,12 @@
 
 # | Imports |----------------------------------------------------------------------------------------------------------|
 import pickle
-from uuid import uuid4
+from uuid           import uuid4
+from datetime       import datetime
+from pathlib        import Path
 
-from manager.directories import DirManager
-from config.vars import ConfigPath, ConfigQueue
+from manager.directories    import DirManager
+from config.vars            import ConfigPath, ConfigQueue
 
 from typing import Any
 # |--------------------------------------------------------------------------------------------------------------------|
@@ -21,7 +23,10 @@ class QueuePickle(DirManager):
     
     @staticmethod
     def put(object: Any) -> None:
-        filename: str = f"{str(uuid4())}{ConfigQueue.EXTENSION}"
-        with open (f"{ConfigPath.BINQUEUE}{filename}", "wb") as f:
+        now     : list[str] = str(datetime.now().timestamp()).split(".")
+        filename: str = f"{now[0]}_{now[1]}|{str(uuid4())}{ConfigQueue.EXTENSION}"
+        
+        with open (Path(ConfigPath.BINQUEUE, filename), "wb") as f:
             pickle.dump(object, f)
-            
+    
+    
