@@ -9,7 +9,7 @@ import os
 import shutil
 from pathlib import Path
 
-from config.vars import ConfigPath
+from app.config.vars import ConfigPath
 # |--------------------------------------------------------------------------------------------------------------------|
 
 
